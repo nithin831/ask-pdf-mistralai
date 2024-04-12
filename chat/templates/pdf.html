@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+
+{% block styles %}
+  <style>
+    body {
+      background-color: #f8f9fa;
+    }
+
+    .card {
+      border: none;
+      box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.1);
+    }
+
+    .card-header {
+      background-color: #6c5ce7;
+      color: #fff;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .btn-primary {
+      background-color: #6c5ce7;
+      border-color: #6c5ce7;
+      transition: background-color 0.3s ease;
+    }
+
+    .btn-primary:hover {
+      background-color: #4834d4;
+      border-color: #4834d4;
+    }
+
+    .form-control-file {
+      overflow: hidden;
+      border: none;
+      background-color: #fff;
+      box-shadow: none;
+      border-radius: 30px;
+      padding: 10px 15px;
+    }
+
+    .custom-file-label::after {
+      content: "Browse";
+    }
+
+    .custom-file-label::before {
+      content: "Choose file";
+    }
+
+    .custom-file-input:focus {
+      box-shadow: none;
+    }
+  </style>
+{% endblock %}
+
+
+{% block content %}
+  <div class="container mt-5">
+    <div class="row">
+      <div class="col-md-6 offset-md-3">
+        <div class="card">
+          <div class="card-header text-center">
+            <h4 class="mb-0">Upload PDF File</h4>
+          </div>
+          <div class="card-body">
+            <form  method="POST" enctype="multipart/form-data">
+              {% csrf_token %}
+              <div class="form-group">
+                <div class="custom-file">
+                  {{ form.as_p }}
+                </div>
+              </div>
+              <button type="submit" class="btn btn-primary btn-block">Upload</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endblock %}
+  
